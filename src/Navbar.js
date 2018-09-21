@@ -28,7 +28,7 @@ class Navbar extends Component {
     })
   	}
 
-	handleSearch=(e)=>{
+	handleSearch=(e)=>{	
 		var input, filter, ul, li, a, i;
 	    input = document.getElementById("myInput");
 	    filter = input.value.toUpperCase();

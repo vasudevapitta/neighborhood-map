@@ -4,17 +4,18 @@ import axios from 'axios'
 import Navbar from './Navbar'
 import Hamburger from './Hamburger'
 
+window.gm_authFailure=()=>{ 
+ alert('OOPS! An Error occured while fetching GoogleMaps API! Please try again later.');
+};
+
+//variable to handle api failure
+const fourSquareFailMsg = 'OOPS! An Error occured while fetching data from FourSquare API! Please try again later.';
+
 class App extends Component {
   state = {
     venues: [],
     markers: []
   }
-
-/*  updateMarkers(newMarkers){
-    this.setState({
-      markers: Object.assign(this.state.markers, newMarkers)
-    })
-  }*/
 
   //do this right after the component is added to the DOM
   componentDidMount(){
@@ -30,8 +31,8 @@ class App extends Component {
   }
 
   loadMap=()=>{
-    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyByxHn5EYEBHNx0XmfvEpl7AkuOlPpgM0w&callback=initMap');
-    window.initMap = this.initMap;
+    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyByxHn5EYEBHNx0XmfvEpl7AkuOlPpgM0w&callback=googleSuccess');
+    window.googleSuccess = this.googleSuccess;
   }
 
   getVenues=()=>{
@@ -53,12 +54,12 @@ class App extends Component {
       }, this.loadMap()) //calling this.loadMap() as a callback - which gets invoked after our ajax call is successful
     })
     .catch(err=>{
-      console.log(`Error! ${err}`)
+      alert(`${fourSquareFailMsg} ${err}`)
     })
   }
   
-  initMap=()=>{
-      
+  googleSuccess=()=>{
+
       //creating a map
        let myMap = new window.google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.263, lng: -76.890},
@@ -84,21 +85,33 @@ class App extends Component {
         <h3>${name}</h3>
         <p>${address}</p>
         </div>`;
+
+        //animate marker
+        function toggleBounce(marker) {
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+          setTimeout(function(){
+            marker.setAnimation(null);
+          }, 2000);
+        }
         
         //creating a marker for each venue
         const myMarker = new window.google.maps.Marker({
           position: {lat: eachVenue.venue.location.lat, lng: eachVenue.venue.location.lng},
           map: myMap,
-          title: eachVenue.venue.name
+          title: eachVenue.venue.name,
         });
 
         //adding eventlistener to each marker
-        myMarker.addListener('click', function() {
+        myMarker.addListener('click', function(e) {
+
+          toggleBounce(this);
+
           //change the content
            infoWindow.setContent(contentString)
 
           //open an infoWindow
           infoWindow.open(myMap, myMarker);
+
         });
 
         this.setState({
@@ -126,11 +139,9 @@ class App extends Component {
 
 function loadScript(url){
   const index = window.document.getElementsByTagName('script')[0];
-
   const script = window.document.createElement('script');
-  script.src = url
-  script.async = true;
   script.defer = true;
+  script.src = url;
   index.parentNode.insertBefore(script, index);//parent.parentNode.insertBefore(child, parent);
 }
 
