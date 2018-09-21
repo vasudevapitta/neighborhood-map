@@ -2,7 +2,8 @@
 This is my final project for the Udacity Front End Nanodegree Program.
 The goal of this project was to implement the Google maps API with React to display a list of locations in a certain area and use a third party api to display details about each location.
 
-![neighborhood map app](https://github.com/vasudevapitta/neighborhood-map/screenshot.png)
+![neighborhood map app](https://github.com/vasudevapitta/neighborhood-map/blob/master/screenshot.png)
+![Alt text](http://full/path/to/img.jpg "Optional title")
 
 ##Development Tools
 React was implemented using the [Create React App](https://reactjs.org/docs/getting-started.html)
