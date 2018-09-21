@@ -46,7 +46,9 @@ Your app is ready to be deployed!
 
 ## Credits
 This app is programmed by Me - Vasudeva Pitta.
+
 Filtering code was taken from [W3Schools](https://www.w3schools.com/howto/howto_js_filter_lists.asp)
+
 Special thanks to my classmates Carlos & Forrest who helped me out when I got stuck.
 
 ## License
