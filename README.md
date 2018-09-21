@@ -7,7 +7,9 @@ The goal of this project was to implement the Google maps API with React to disp
 
 ## Development Tools
 React was implemented using the [Create React App](https://reactjs.org/docs/getting-started.html)
+
 Google Maps was implement using [google-maps-react](https://developers.google.com/maps/documentation/)
+
 This project also uses [FourSquare API](https://developer.foursquare.com/)
 
 ## Deployment
