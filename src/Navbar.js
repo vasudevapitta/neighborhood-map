@@ -66,8 +66,11 @@ class Navbar extends Component {
 									onClick={()=>this.handleEvent(eachVenue)}
 									onKeyPress={()=>this.handleEvent(eachVenue)}
 									id={eachVenue.venue.name}
+
 									>
-									<a href="#">
+									<a href="#"
+									aria-label={eachVenue.venue.name}
+									aria-role="link">
 									{eachVenue.venue.name}
 									</a>
 									</li>

@@ -70,6 +70,7 @@ class App extends Component {
 
        //looping through the venues array which is inside this.state to generate markers
        this.state.venues.map(eachVenue => {
+        console.log(eachVenue);
         const name = `${eachVenue.venue.name}`;
         const address = `${eachVenue.venue.location.formattedAddress}`;
 
@@ -142,6 +143,7 @@ function loadScript(url){
   const script = window.document.createElement('script');
   script.defer = true;
   script.src = url;
+  script.onerror = window.gm_authFailure;
   index.parentNode.insertBefore(script, index);//parent.parentNode.insertBefore(child, parent);
 }
 
