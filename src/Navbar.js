@@ -52,12 +52,12 @@ class Navbar extends Component {
 
 	render(){
 		return(
-			<div id='navbar'>
+			<div id='navbar' aria-role='navigation'>
 			<input type='search' id='myInput'
 			onChange={this.handleSearch}
 			placeholder="Search for Restaurants.."
 			/>
-			<ul id='myUL'>
+			<ul id='myUL' aria-role='list'>
 					{ 
 						this.props.venues.map(eachVenue=>{
 								return (
@@ -66,7 +66,7 @@ class Navbar extends Component {
 									onClick={()=>this.handleEvent(eachVenue)}
 									onKeyPress={()=>this.handleEvent(eachVenue)}
 									id={eachVenue.venue.name}
-
+									aria-role='link'
 									>
 									<a href="#"
 									aria-label={eachVenue.venue.name}

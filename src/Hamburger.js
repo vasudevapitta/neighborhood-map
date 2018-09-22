@@ -12,7 +12,8 @@ class Hamburger extends Component {
 			<div className='header'>
 			<div className='ham'
 			onClick={this.showHide}
-			>☰</div>
+			tabindex='1'
+			onKeyPress={this.showHide}>☰</div>
 			</div>
 		)
 	}

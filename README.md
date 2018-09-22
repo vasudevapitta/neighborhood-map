@@ -33,6 +33,11 @@ Download or clone the repository and unzip the files
 - Open http://localhost:3000
 or enter Y for yes if you already have a project running on port 3000 and would like to run this project on a different port- then open http://localhost:YOURPORTNUMBER
 
+The service worker is implemented only in the production build
+npm run build
+serve -s build
+navigate to http://localhost:3000/
+
 ### npm run build
 Builds the app for production to the build folder.
 It correctly bundles React into production mode and optimizes the build for the best performance.

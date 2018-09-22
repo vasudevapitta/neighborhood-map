@@ -142,6 +142,7 @@ function loadScript(url){
   const index = window.document.getElementsByTagName('script')[0];
   const script = window.document.createElement('script');
   script.defer = true;
+  script.async = true;
   script.src = url;
   script.onerror = window.gm_authFailure;
   index.parentNode.insertBefore(script, index);//parent.parentNode.insertBefore(child, parent);
